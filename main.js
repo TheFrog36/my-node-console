@@ -1,0 +1,22 @@
+const scriviLeggiFile = require('./scriviLeggiFile.js')  
+const gestisciInputConsole = require('./gestisciInputConsole.js')
+const strumentiPerIlTesto = require('./strumentiPerIltesto.js')
+
+const inputUrl = gestisciInputConsole.prendoArgomentiEIndexConMessaggioErrore('Non riesco a prendere input',0) 
+const outputUrl = gestisciInputConsole.prendoArgomentiEIndexConMessaggioErrore('Non riesco a prendere output',1) 
+const parolaDaCercare = gestisciInputConsole.prendoArgomentoOpzionale(2)
+const ilMioFile = scriviLeggiFile.leggiUnFileConURL(inputUrl)
+const numeroDiCaratteri = strumentiPerIlTesto.contaIlNumeroDiCaratteri(ilMioFile)
+const numeroDiCaratteriSenzaSpazi = strumentiPerIlTesto.contaIlNumeroDiCaratteriSenzaSpazi(ilMioFile)
+const numeroDiParole = strumentiPerIlTesto.contoIlNumeroDiParoleInUnaStringa(ilMioFile)
+let frequenza = -1;
+if(parolaDaCercare) frequenza = strumentiPerIlTesto.contoQuanteVolteUnaParolaAppare(parolaDaCercare, ilMioFile)
+const report = strumentiPerIlTesto.generaIlTestoPiuIlMessaggioDiReport(ilMioFile,parolaDaCercare,numeroDiCaratteri,numeroDiCaratteriSenzaSpazi,numeroDiParole,frequenza)
+scriviLeggiFile.scriviUnFileConURL(outputUrl,report)
+let arrayTemp = strumentiPerIlTesto.contaQuanteVolteAppaionoTutteLeParoleConPercentuale(ilMioFile)
+console.log(arrayTemp);
+let risultato = 0
+for (const parola of arrayTemp) {
+    risultato += parola[2]
+}
+console.log(risultato);

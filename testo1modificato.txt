@@ -1,0 +1,6 @@
+AH! il css! css il il a b c d e f 
+
+numero di caratteri: 34
+numero di caratteri spazi esclusi: 22
+numero di parole: 12
+la parola "et" appare 0 volte
