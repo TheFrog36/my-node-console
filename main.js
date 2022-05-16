@@ -14,7 +14,7 @@ if(parolaDaCercare) frequenza = strumentiPerIlTesto.contoQuanteVolteUnaParolaApp
 const report = strumentiPerIlTesto.generaIlTestoPiuIlMessaggioDiReport(ilMioFile,parolaDaCercare,numeroDiCaratteri,numeroDiCaratteriSenzaSpazi,numeroDiParole,frequenza)
 scriviLeggiFile.scriviUnFileConURL(outputUrl,report)
 let arrayTemp = strumentiPerIlTesto.contaQuanteVolteAppaionoTutteLeParole(ilMioFile)
-arrayTemp.forEach(element => console.log(element))
-// arrayTemp.sort((p,c) => c[1] - p[1]).forEach(element => console.log(element))// Stampa ordinata per frequenza
+// arrayTemp.forEach(element => console.log(element))
+arrayTemp.sort((p,c) => c[1] - p[1]).forEach(element => console.log(element))// Stampa ordinata per frequenza
 
 

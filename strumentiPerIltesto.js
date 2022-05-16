@@ -59,7 +59,7 @@ function contaQuanteVolteAppaionoTutteLeParole(testoOriginale) {  //soluzione co
     let arrayParole = creaUnArrayDiParoleDaUnTesto(testoOriginale);
     arrayParole = arrayParole.map(element => element.toLowerCase());
     let arrayDiParoleUnicheContate = [];
-    arrayDiParoleUnicheContate.push([arrayParole.pop(), 1])
+    arrayDiParoleUnicheContate.push([arrayParole.pop(), 1])  //Inserisco un elemento per evitare che il codice si rompa
     for (const parola of arrayParole) {
         const indice = ricercaBinaria(arrayDiParoleUnicheContate, parola);
         // console.log(arrayDiParoleUnicheContate)
@@ -77,17 +77,17 @@ function ricercaBinaria(array, elementoDaCercare) {
         middle = Math.floor((left + right) / 2);
         if (array[middle][0].localeCompare(elementoDaCercare) === -1) left = middle + 1;
         else if (array[middle][0].localeCompare(elementoDaCercare) === 1) right = middle - 1;
-        else return middle;
-    }
+        else return middle;  
+    }  //fino a qua è una ricerca binaria classica
     if(elementoDaCercare.localeCompare(array[middle][0]) === 1) middle++  //controllo se l'elemento devo metterlo a sinistra o destra
     return middle === 0 ? -Infinity : middle * -1 //Mi salvo ugualmente il middle in negativo se non trova il valore così posso mettere il nuovo elemento alla destra di middle*-1
     //Per creare un nuovo elemento in posizione 0 di arrayDiParoleUnicheContate, lo segno come -infinity
 }
+
 function contaQuanteVolteAppaionoTutteLeParoleConPercentuale(testoOriginale){
     let arrayDiParoleContate = contaQuanteVolteAppaionoTutteLeParole(testoOriginale)
     const lunghezzaArray = contoIlNumeroDiParoleInUnaStringa(testoOriginale)
     arrayDiParoleContate.map(element => element.push(element[1] / lunghezzaArray * 100))
-    // console.log(arrayDiParoleContate)
     return arrayDiParoleContate
 }
 exports.contaIlNumeroDiCaratteri = contaIlNumeroDiCaratteri;
