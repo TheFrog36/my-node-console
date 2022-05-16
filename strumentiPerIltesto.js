@@ -73,13 +73,13 @@ function ricercaBinaria(array, elementoDaCercare) {
     let left = 0;
     let right = array.length - 1;
     let middle = 0;
-    while (left <= right) {  //risolvere quando sono uguali
+    while (left <= right) {  
         middle = Math.floor((left + right) / 2);
         if (array[middle][0].localeCompare(elementoDaCercare) === -1) left = middle + 1;
         else if (array[middle][0].localeCompare(elementoDaCercare) === 1) right = middle - 1;
         else return middle;
     }
-    if(elementoDaCercare.localeCompare(array[middle][0]) === 1) middle++  //elimino l'errore di approssimazione del middle
+    if(elementoDaCercare.localeCompare(array[middle][0]) === 1) middle++  //controllo se l'elemento devo metterlo a sinistra o destra
     return middle === 0 ? -Infinity : middle * -1 //Mi salvo ugualmente il middle in negativo se non trova il valore così posso mettere il nuovo elemento alla destra di middle*-1
     //Per creare un nuovo elemento in posizione 0 di arrayDiParoleUnicheContate, lo segno come -infinity
 }
